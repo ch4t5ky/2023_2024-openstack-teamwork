@@ -13,7 +13,7 @@ Group: Nomad Enjoyers
 
 ![VirtualBox_4vdATlqV7V](https://github.com/ch4t5ky/2023_2024-openstack-teamwork/assets/141184937/cff1a06d-1eaa-4fd9-96ca-2b9dac3ed572)
 
-Также для виртуальном машины пробрасываются порты для дальнейшего управления по shh, и доступа к ui openstack:
+Также для виртуальном машины пробрасываются порты для дальнейшего управления по ssh, и доступа к ui openstack:
 ![VirtualBox_VbV40EMUpc](https://github.com/ch4t5ky/2023_2024-openstack-teamwork/assets/141184937/f9905a68-e09b-4d69-9d7e-b57f2715200c)
 
 

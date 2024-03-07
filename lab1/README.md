@@ -1,7 +1,11 @@
-University: [ITMO University](https://itmo.ru/ru/)  
-Faculty: [FICT](https://fict.itmo.ru)
-Year: 2023/2024 
-Group: Nomad Enjoyers
+University: [ITMO University](https://itmo.ru/ru/)  \
+Faculty: [FICT](https://fict.itmo.ru) \
+Year: 2023/2024 \
+Group: 
+- Заглубоцкий Артём
+- Доронин Дмитрий
+- Мигулаева Татьяна
+- Ишутина Елизавета
 
 # Лабораторная работа №1 "Подготовка к развертыванию OpenStack"
 ## Введение

@@ -12,8 +12,93 @@ Group:
 
 ## Содержание
 
+- [Ход работы](#ход-работы)
+  - [Проброс портов](#проброс-портов) 
+  - [Запрос токена из Keystone](#запрос-токена-из-keystone) 
+  - [Проверка токена](#проверка-токена) 
+  - [Создание ВМ](#создание-вм) 
+    - [Получение id образа](#получение-id-образа) 
+    - [Получение flavor](#получение-flavor) 
+    - [Создание ВМ](#создание-вм) 
+    - [Проверка ВМ](#проверка-вм) 
+- [Выполнение задания](#выполнение-задания)
+  - [Задание](#задание)
+- [Ответы на вопросы](#ответы-на-вопросы)
 
 ## Ход работы
+
+### Проброс портов
+
+Проброс нужных портов:
+![ports.png](./img/ports.png)
+
+### Запрос токена из Keystone
+
+К адресу keystone `http://localhost:5000/v3/auth/tokens` выполняется запрос с данными авторизации в теле запроса в формате json.:
+```json
+{
+    "auth": {
+        "identity": {
+            "methods": ["password"],
+            "password": {
+                "user": {
+                    "name": "admin",
+                    "domain": {"id": "default"},
+                    "password": "642342bf62c244f1"
+                }
+            }
+        },
+        "scope": {
+            "project": {
+                "name": "admin",
+                "domain": {"id": "default"}
+            }
+        }
+    }
+}
+```
+![keystone_request.png](./img/keystone_request.png)
+
+### Проверка токена
+
+Для проверки токена делается запрос `GET` к `http://localhost:8774/v2.1/servers` с полученным токеном в загаловках `X-Auth-Token` и `X-Subject-Token`:
+![servers_request.png](./img/servers_request.png)
+
+### Создание ВМ
+
+Для создания ВМ делается `POST` запрос к  `http://localhost:8774/v2.1/servers` с полученным токеном в загаловках `X-Auth-Token` и `X-Subject-Token` и параметрами ВМ в теле запроса. Чтобы создать вм нужно как минимум получить ID образа, прописать flavor (конфигурацию), а также прописать настройки сети. В данном случае была выбрана сеть, созданная в ЛР №2:
+
+##### Получение id образа
+Используется `GET` запрос к `http://localhost:9292/v2/images` с установлеными заголовками авторизации по токену.
+![get_image_id.png](./img/get_image_id.png)
+
+##### Получение flavor образа
+Получение списка flavor запросом `GET` по ссылке `http://localhost:8774/v2.1/flavors`.
+![get_all_flavors.png](./img/get_all_flavors.png)
+
+Получение tiny flavor запросом `GET` по ссылке `http://localhost:8774/v2.1/flavors/1`.
+![get_tiny_flavor.png](./img/get_tiny_flavor.png)
+
+##### Создание вм
+```json
+{
+    "server": {
+        "name": "nomajEnjoyer",
+        "imageRef": "66d85733-1234-43fd-afef-c7cbfef1699f",
+        "flavorRef": "1",
+        "networks": [
+            {
+                "uuid": "18edcf42-e172-4d32-a5d1-c6231376f59d"
+            }
+        ]
+    }
+}
+```
+![create_vm.png](./img/create_vm.png)
+
+##### Проверка вм
+![list_vms_2.png](./img/list_vms_2.png)
+![check_created_vm.png](./img/check_created_vm.png)
 
 ## Выполнение задания
 

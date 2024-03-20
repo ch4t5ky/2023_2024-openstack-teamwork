@@ -1,0 +1,237 @@
+{
+	"info": {
+		"_postman_id": "231e8417-17d9-474f-bd54-664fbaf21365",
+		"name": "openstack",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30264918"
+	},
+	"item": [
+		{
+			"name": "create token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"auth\": {\r\n        \"identity\": {\r\n            \"methods\": [\"password\"],\r\n            \"password\": {\r\n                \"user\": {\r\n                    \"name\": \"admin\",\r\n                    \"domain\": {\"id\": \"default\"},\r\n                    \"password\": \"642342bf62c244f1\"\r\n                }\r\n            }\r\n        },\r\n        \"scope\": {\r\n            \"project\": {\r\n                \"name\": \"admin\",\r\n                \"domain\": {\"id\": \"default\"}\r\n            }\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/v3/auth/tokens",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"v3",
+						"auth",
+						"tokens"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list servers to check token",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Subject-Token",
+						"value": "gAAAAABl-x6jSNZzz-nHTdf-F7XjczYqh3hreNQWefmwf1vz3jtX0Jk3TSwYp_4xn9IgjT0GhlpksMmMAOv1xlKgQi_ZakptJQjESSOByAPyywDi-CjOgQkpVX10m9LoK1CtEHnxOL_GufHmIquLnmhJfPApyt04o4YIvHtKqziOfB2PUEjSRM4",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "gAAAAABl-x6jSNZzz-nHTdf-F7XjczYqh3hreNQWefmwf1vz3jtX0Jk3TSwYp_4xn9IgjT0GhlpksMmMAOv1xlKgQi_ZakptJQjESSOByAPyywDi-CjOgQkpVX10m9LoK1CtEHnxOL_GufHmIquLnmhJfPApyt04o4YIvHtKqziOfB2PUEjSRM4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8774/v2.1/servers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8774",
+					"path": [
+						"v2.1",
+						"servers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "check created vm",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Subject-Token",
+						"value": "gAAAAABl-x6jSNZzz-nHTdf-F7XjczYqh3hreNQWefmwf1vz3jtX0Jk3TSwYp_4xn9IgjT0GhlpksMmMAOv1xlKgQi_ZakptJQjESSOByAPyywDi-CjOgQkpVX10m9LoK1CtEHnxOL_GufHmIquLnmhJfPApyt04o4YIvHtKqziOfB2PUEjSRM4",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "gAAAAABl-x6jSNZzz-nHTdf-F7XjczYqh3hreNQWefmwf1vz3jtX0Jk3TSwYp_4xn9IgjT0GhlpksMmMAOv1xlKgQi_ZakptJQjESSOByAPyywDi-CjOgQkpVX10m9LoK1CtEHnxOL_GufHmIquLnmhJfPApyt04o4YIvHtKqziOfB2PUEjSRM4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8774/v2.1/servers/6910faf0-f280-4138-ac69-2d5ad326ff3f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8774",
+					"path": [
+						"v2.1",
+						"servers",
+						"6910faf0-f280-4138-ac69-2d5ad326ff3f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get images",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Subject-Token",
+						"value": "gAAAAABl-x6jSNZzz-nHTdf-F7XjczYqh3hreNQWefmwf1vz3jtX0Jk3TSwYp_4xn9IgjT0GhlpksMmMAOv1xlKgQi_ZakptJQjESSOByAPyywDi-CjOgQkpVX10m9LoK1CtEHnxOL_GufHmIquLnmhJfPApyt04o4YIvHtKqziOfB2PUEjSRM4",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "gAAAAABl-x6jSNZzz-nHTdf-F7XjczYqh3hreNQWefmwf1vz3jtX0Jk3TSwYp_4xn9IgjT0GhlpksMmMAOv1xlKgQi_ZakptJQjESSOByAPyywDi-CjOgQkpVX10m9LoK1CtEHnxOL_GufHmIquLnmhJfPApyt04o4YIvHtKqziOfB2PUEjSRM4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9292/v2/images",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9292",
+					"path": [
+						"v2",
+						"images"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get flavors",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Subject-Token",
+						"value": "gAAAAABl-x6jSNZzz-nHTdf-F7XjczYqh3hreNQWefmwf1vz3jtX0Jk3TSwYp_4xn9IgjT0GhlpksMmMAOv1xlKgQi_ZakptJQjESSOByAPyywDi-CjOgQkpVX10m9LoK1CtEHnxOL_GufHmIquLnmhJfPApyt04o4YIvHtKqziOfB2PUEjSRM4",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "gAAAAABl-x6jSNZzz-nHTdf-F7XjczYqh3hreNQWefmwf1vz3jtX0Jk3TSwYp_4xn9IgjT0GhlpksMmMAOv1xlKgQi_ZakptJQjESSOByAPyywDi-CjOgQkpVX10m9LoK1CtEHnxOL_GufHmIquLnmhJfPApyt04o4YIvHtKqziOfB2PUEjSRM4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8774/v2.1/flavors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8774",
+					"path": [
+						"v2.1",
+						"flavors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get tiny flavor",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Subject-Token",
+						"value": "gAAAAABl-x6jSNZzz-nHTdf-F7XjczYqh3hreNQWefmwf1vz3jtX0Jk3TSwYp_4xn9IgjT0GhlpksMmMAOv1xlKgQi_ZakptJQjESSOByAPyywDi-CjOgQkpVX10m9LoK1CtEHnxOL_GufHmIquLnmhJfPApyt04o4YIvHtKqziOfB2PUEjSRM4",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "gAAAAABl-x6jSNZzz-nHTdf-F7XjczYqh3hreNQWefmwf1vz3jtX0Jk3TSwYp_4xn9IgjT0GhlpksMmMAOv1xlKgQi_ZakptJQjESSOByAPyywDi-CjOgQkpVX10m9LoK1CtEHnxOL_GufHmIquLnmhJfPApyt04o4YIvHtKqziOfB2PUEjSRM4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8774/v2.1/flavors/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8774",
+					"path": [
+						"v2.1",
+						"flavors",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create vm",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Subject-Token",
+						"value": "gAAAAABl-x6jSNZzz-nHTdf-F7XjczYqh3hreNQWefmwf1vz3jtX0Jk3TSwYp_4xn9IgjT0GhlpksMmMAOv1xlKgQi_ZakptJQjESSOByAPyywDi-CjOgQkpVX10m9LoK1CtEHnxOL_GufHmIquLnmhJfPApyt04o4YIvHtKqziOfB2PUEjSRM4",
+						"type": "text"
+					},
+					{
+						"key": "X-Auth-Token",
+						"value": "gAAAAABl-x6jSNZzz-nHTdf-F7XjczYqh3hreNQWefmwf1vz3jtX0Jk3TSwYp_4xn9IgjT0GhlpksMmMAOv1xlKgQi_ZakptJQjESSOByAPyywDi-CjOgQkpVX10m9LoK1CtEHnxOL_GufHmIquLnmhJfPApyt04o4YIvHtKqziOfB2PUEjSRM4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"server\": {\r\n        \"name\": \"new-vm\",\r\n        \"imageRef\": \"66d85733-1234-43fd-afef-c7cbfef1699f\",\r\n        \"flavorRef\": \"1\",\r\n        \"networks\": \"auto\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8774/v2.1/servers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8774",
+					"path": [
+						"v2.1",
+						"servers"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
